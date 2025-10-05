@@ -1,0 +1,5 @@
+# Redirects all requests to index.html unless the request is for a file or directory
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
