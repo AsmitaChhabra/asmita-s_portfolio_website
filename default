@@ -1,0 +1,27 @@
+server {
+    listen 8080;
+    root /home/site/wwwroot;
+    index index.php index.html; # Prioritize index.php since we renamed it
+
+    # 1. Block to directly serve all static files (CSS, JS, Images, etc.)
+    location ~* \.(css|js|jpg|jpeg|png|gif|svg|webp|ico|eot|ttf|woff|woff2|pdf)$ {
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+        try_files $uri =404; # Check the path directly and stop if found, otherwise 404
+    }
+
+    # 2. Block for all remaining requests (the main routing logic)
+    location / {
+        # Try serving the request as a directory, then fall back to index.php (the main file)
+        try_files $uri $uri/ /index.php$is_args$query_string;
+    }
+
+    # 3. Block to execute PHP files
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/var/run/php-fpm.sock;
+        fastcgi_index index.php;
+    }
+}
