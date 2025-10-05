@@ -2,12 +2,14 @@ server {
     listen 8080;
     root /home/site/wwwroot;
 
-    # This line tells NGINX to look for index.html first, then index.php
+    # NGINX looks for index.html first, then index.php
     index index.html index.php; 
 
-    # This block ensures static files (like CSS, JS, images) are served directly
+    # This block handles all requests and ensures static files are served correctly.
     location / {
-        try_files $uri $uri/ /index.html$is_args$query_string;
+        # Tries to serve the request as a file ($uri), then as a directory ($uri/),
+        # and finally serves index.html for all other non-existent paths (SPA routing).
+        try_files $uri $uri/ /index.html; 
     }
 
     # This block ensures PHP files are executed
