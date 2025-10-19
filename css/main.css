@@ -230,6 +230,7 @@ h5 {
 .hero-heading-subtitle {
   font-size: clamp(1.125rem, 1.054rem + 0.36vw, 1.375rem);
   font-weight: 400;
+  display: inline-block;
 }
 
 .hero-img {
