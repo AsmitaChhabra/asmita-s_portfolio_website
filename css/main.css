@@ -194,10 +194,12 @@ h5 {
 }
 
 /* Hero section */
+
 .hero {
   position: relative;
-  padding-top: 180px;
-  background-color: var(--primary-bg-color);
+  padding-top: 160px;
+  background: linear-gradient(120deg, #f7fbfd 60%, #e97627 100%);
+  min-height: 600px;
 }
 
 .hero-row {
@@ -222,15 +224,19 @@ h5 {
 
 .hero-heading {
   margin: 5px 0;
-  font-weight: 500;
-  font-size: clamp(3.25rem, 2.75rem + 2.5vw, 5rem);
-  line-height: 1.2;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 3rem + 2.5vw, 5.5rem);
+  line-height: 1.1;
+  color: #0c1618;
+  text-shadow: 0 2px 16px rgba(233,118,39,0.08);
 }
 
 .hero-heading-subtitle {
-  font-size: clamp(1.125rem, 1.054rem + 0.36vw, 1.375rem);
-  font-weight: 400;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 500;
+  color: #e97627;
   display: inline-block;
+  margin-bottom: 18px;
 }
 
 .hero-img {
@@ -259,36 +265,37 @@ h5 {
 
   img {
     height: 24px;
-    width: 24px;
-  }
-}
-
-.social-links-row a {
-  filter: invert(35%) sepia(11%) saturate(160%) hue-rotate(145deg)
-    brightness(88%) contrast(80%);
-  transition: all 0.3s ease-in-out;
-}
-
-.social-links-row a:hover {
-  filter: invert(0%) sepia(0%) saturate(7500%) hue-rotate(305deg)
-    brightness(97%) contrast(103%);
-}
-
-/* About section */
-.about {
-  padding: 7rem 0;
-}
-
-.about-row {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  justify-content: center;
-  gap: 90px;
-  margin-bottom: 80px;
-  color: var(--supportive-text-color);
-}
-
-.about-descr {
+    .btn {
+      display: inline-block;
+      height: 52px;
+      font-weight: 600;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      line-height: 52px;
+      padding: 0 40px;
+      margin: 0 16px 18px 0;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      cursor: pointer;
+      background: linear-gradient(90deg, #e97627 60%, #0c1618 100%);
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(233,118,39,0.12);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover,
+    .btn:focus {
+      background: linear-gradient(90deg, #0c1618 60%, #e97627 100%);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(233,118,39,0.18);
+      outline: 0;
+    }
+    .btn:active {
+      background: #e97627;
+    }
   font-size: clamp(1rem, 0.964rem + 0.18vw, 1.125rem);
   line-height: 1.7;
   font-weight: 400;
