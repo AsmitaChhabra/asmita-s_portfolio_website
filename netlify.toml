@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Optional: Add security headers for functions responses (CORS not needed for same-origin fetch)
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "no-referrer"

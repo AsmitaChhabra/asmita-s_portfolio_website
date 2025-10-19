@@ -86,19 +86,37 @@ function mountChatWidget() {
     body.scrollTop = body.scrollHeight;
   }
 
-  function botReply(q) {
-    // Stub: craft a friendly reply. Replace with real API later.
+  async function botReply(q) {
+    // Try Netlify function first
+    try {
+      const res = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: q })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) {
+          push('bot', data.reply);
+          return;
+        }
+      }
+    } catch (e) {
+      // fall back to local canned replies below
+    }
+
+    // Local fallback
     const canned = `I’m Asmita’s AI. I can summarize projects, skills (Python, SQL, Tableau, ML basics), and how to contact her. Ask things like “Show me dashboard projects” or “What ML have you done?”.`;
     let reply = canned;
     const ql = q.toLowerCase();
-    if (ql.includes("project") || ql.includes("dashboard")) {
-      reply = "Recent projects include: Omega HR Insights (Tableau), Superstore Sales Dashboard, and an OpenCV Resume Builder. Want a short summary of any?";
-    } else if (ql.includes("skill") || ql.includes("stack") || ql.includes("tech")) {
-      reply = "Core skills: Python, SQL & database design, Tableau & visualization, plus ML foundations (supervised/unsupervised, scikit‑learn, evaluation).";
-    } else if (ql.includes("contact") || ql.includes("email")) {
-      reply = "You can reach Asmita at asmita.chhabra@flame.edu.in or via LinkedIn (links in header/footer).";
+    if (ql.includes('project') || ql.includes('dashboard')) {
+      reply = 'Recent projects include: E‑Kart Customer Retention (ML/EDA), Football DB SQL Querying, OpenCV Resume Builder, Meteorological Data Analysis, Cyclone Analysis, and IPL Data Viz. Want a short summary of any?';
+    } else if (ql.includes('skill') || ql.includes('stack') || ql.includes('tech')) {
+      reply = 'Core skills: Python, SQL & database design, Tableau & visualization, plus ML foundations (supervised/unsupervised, scikit‑learn, evaluation).';
+    } else if (ql.includes('contact') || ql.includes('email')) {
+      reply = 'You can reach Asmita at asmita.chhabra@flame.edu.in or via LinkedIn (links in header/footer).';
     }
-    setTimeout(() => push("bot", reply), 300);
+    setTimeout(() => push('bot', reply), 150);
   }
 
   function handleSend() {
