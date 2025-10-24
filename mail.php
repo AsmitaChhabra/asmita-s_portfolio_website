@@ -36,8 +36,8 @@ try {
     // The address the message will be SENT FROM (must match the $mail->Username)
     $mail->setFrom('asmitachhabra04@gmail.com', "Asmita Chhabra Portfolio");
     
-    // The address that will RECEIVE the email (Asmita's professional email)
-    $mail->addAddress('asmita.chhabra@flame.edu.in');
+    // The address that will RECEIVE the email (send contact form messages to Gmail)
+    $mail->addAddress('asmitachhabra04@gmail.com');
     
     // Add a reply-to address so you can reply directly to the sender
     $mail->addReplyTo($email, $name); 

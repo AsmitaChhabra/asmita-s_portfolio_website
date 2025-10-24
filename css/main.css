@@ -1,3 +1,32 @@
+
+.hero-photo-circle {
+  width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--secondary-accent);
+  box-shadow: 0 4px 32px rgba(111,29,27,0.15);
+  background: var(--white-color);
+  display: block;
+  margin: 0 auto;
+}
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroFadeIn 0.8s forwards;
+}
+.hero-content .hero-greeting { animation-delay: 0.1s; }
+.hero-content .hero-heading { animation-delay: 0.3s; }
+.hero-content .hero-heading-subtitle { animation-delay: 0.5s; }
+.hero-content .about-social-list { animation-delay: 0.7s; }
+.hero-content .btn { animation-delay: 0.9s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 @import "./reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -22,33 +51,14 @@
 /* Common styles */
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
-  color: var(--main-text-color);
-  font-family: "Poppins", sans-serif;
-  letter-spacing: -0.15px;
+  background-color: var(--primary-bg-color);
 }
 
-.container {
-  padding: 0 32px;
-  max-width: 1200px;
-  /* max-width: clamp(54.5rem, 38.125rem + 81.88vw, 120rem); */
-  margin: 0 auto;
-}
 
-.container-lg {
-  max-width: 1600px;
-}
-
-.title {
-  font-size: 44px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 54px;
-}
-
+/* Buttons */
 .btn {
   display: inline-block;
   height: 52px;
@@ -194,13 +204,24 @@ h5 {
 }
 
 /* Hero section */
-
 .hero {
   position: relative;
-  padding-top: 160px;
-  background: linear-gradient(120deg, #f7fbfd 60%, #e97627 100%);
-  min-height: 600px;
+  padding-top: 180px;
+  background-color: var(--primary-bg-color);
+  overflow: hidden;
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 600px at 15% 20%, rgba(111, 29, 27, 0.12), transparent 60%),
+    radial-gradient(800px 520px at 85% 35%, rgba(12, 22, 24, 0.08), transparent 62%),
+    radial-gradient(600px 420px at 70% 80%, rgba(12, 22, 24, 0.05), transparent 65%);
+}
+
+
 
 .hero-row {
   display: flex;
@@ -224,19 +245,16 @@ h5 {
 
 .hero-heading {
   margin: 5px 0;
-  font-weight: 700;
-  font-size: clamp(3.5rem, 3rem + 2.5vw, 5.5rem);
-  line-height: 1.1;
-  color: #0c1618;
-  text-shadow: 0 2px 16px rgba(233,118,39,0.08);
+  font-weight: 600;
+  font-size: clamp(3.75rem, 3.25rem + 2.75vw, 5.75rem);
+  line-height: 1.2;
+  color: var(--primary-accent);
 }
 
 .hero-heading-subtitle {
-  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.6rem);
   font-weight: 500;
-  color: #e97627;
-  display: inline-block;
-  margin-bottom: 18px;
+  color: var(--supportive-text-color);
 }
 
 .hero-img {
@@ -265,37 +283,50 @@ h5 {
 
   img {
     height: 24px;
-    .btn {
-      display: inline-block;
-      height: 52px;
-      font-weight: 600;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      line-height: 52px;
-      padding: 0 40px;
-      margin: 0 16px 18px 0;
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      white-space: nowrap;
-      cursor: pointer;
-      background: linear-gradient(90deg, #e97627 60%, #0c1618 100%);
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(233,118,39,0.12);
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .btn:hover,
-    .btn:focus {
-      background: linear-gradient(90deg, #0c1618 60%, #e97627 100%);
-      color: #fff;
-      box-shadow: 0 4px 24px rgba(233,118,39,0.18);
-      outline: 0;
-    }
-    .btn:active {
-      background: #e97627;
-    }
+    width: 24px;
+  }
+}
+
+.social-links-row a {
+  filter: invert(35%) sepia(11%) saturate(160%) hue-rotate(145deg)
+    brightness(88%) contrast(80%);
+  transition: all 0.3s ease-in-out;
+}
+
+
+.social-links-row a:hover {
+  filter: invert(0%) sepia(0%) saturate(7500%) hue-rotate(305deg)
+    brightness(97%) contrast(103%);
+  transform: scale(1.18);
+  box-shadow: 0 4px 16px rgba(111,29,27,0.12);
+}
+
+/* About section */
+.about {
+  padding: 7rem 0;
+  background: linear-gradient(135deg, #fef5f0 0%, #fde8dc 50%, #fddcc8 100%);
+}
+  .about-title .title::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin: 14px auto 0;
+    background-color: var(--secondary-accent);
+    opacity: 0.9;
+  }
+
+.about-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: start;
+  justify-content: center;
+  gap: 90px;
+  margin-bottom: 80px;
+  color: var(--supportive-text-color);
+}
+
+.about-descr {
   font-size: clamp(1rem, 0.964rem + 0.18vw, 1.125rem);
   line-height: 1.7;
   font-weight: 400;
@@ -320,6 +351,33 @@ h5 {
 
 .skill-percent {
   float: right;
+}
+.toolkit {
+  color: var(--supportive-text-color);
+}
+.toolkit-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--main-text-color);
+}
+.toolkit-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.toolkit-list {
+  padding-left: 18px;
+  list-style: disc;
+}
+.toolkit-list li { 
+  margin: 8px 0; 
+  font-size: 15px;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .toolkit-intro { font-size: 15px; }
+  .toolkit-list li { font-size: 14px; }
 }
 .skill-bar__progress {
   background-color: var(--gray-color);
@@ -383,6 +441,16 @@ h5 {
 
 .projects-title {
   text-align: center;
+}
+
+.projects-title .title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin: 14px auto 0;
+  background-color: var(--secondary-accent);
+  opacity: 0.9;
 }
 
 .projects-row {
@@ -471,6 +539,15 @@ h5 {
   padding: 7rem 0;
   text-align: center;
 }
+  .contact-title .title::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin: 14px auto 0;
+    background-color: var(--secondary-accent);
+    opacity: 0.9;
+  }
 
 .contact-content {
   font-size: clamp(1rem, 0.964rem + 0.18vw, 1.125rem);

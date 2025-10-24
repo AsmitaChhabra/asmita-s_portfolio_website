@@ -164,3 +164,57 @@
     flex: 1 1 100%;
   }
 }
+
+/* Responsive adjustments for circular hero image */
+.hero-photo-circle {
+  width: 320px;
+  height: 320px;
+}
+
+@media (max-width: 977px) {
+  .hero-photo-circle {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* Toolkit styling beside About */
+.toolkit .toolkit-title {
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+.toolkit .toolkit-intro,
+.toolkit .toolkit-list-block p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+@media (max-width: 977px) {
+  /* reduce font slightly to keep side-by-side layout tidy */
+  .toolkit .toolkit-title { font-size: 1rem; }
+  .toolkit .toolkit-intro,
+  .toolkit .toolkit-list-block p { font-size: 0.9rem; }
+}
+
+@media (max-width: 640px) {
+  /* stack under About on smaller screens */
+  .about-row { grid-template-columns: 1fr; }
+  .toolkit .toolkit-title { font-size: 0.975rem; }
+  .toolkit .toolkit-intro,
+  .toolkit .toolkit-list-block p { font-size: 0.875rem; }
+}
+
+@media (max-width: 640px) {
+  .hero-photo-circle {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 406px) {
+  .hero-photo-circle {
+    width: 170px;
+    height: 170px;
+  }
+}

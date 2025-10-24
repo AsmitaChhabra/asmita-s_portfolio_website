@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24"><g><circle cx="16" cy="16" r="16" fill="#e97627"/><g fill="#fff"><circle cx="16" cy="16" r="2.5"/><circle cx="8.5" cy="16" r="1.5"/><circle cx="23.5" cy="16" r="1.5"/><circle cx="16" cy="8.5" r="1.5"/><circle cx="16" cy="23.5" r="1.5"/><circle cx="11.5" cy="11.5" r="1"/><circle cx="20.5" cy="11.5" r="1"/><circle cx="11.5" cy="20.5" r="1"/><circle cx="20.5" cy="20.5" r="1"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="24" height="24">
+  <title>Tableau</title>
+  <g fill="#0c1618">
+    <!-- Vertical bar (center) -->
+    <rect x="27" y="10" width="6" height="40" />
+    <!-- Horizontal bar (center) -->
+    <rect x="10" y="27" width="40" height="6" />
+    <!-- Top small vertical -->
+    <rect x="28" y="2" width="4" height="6" />
+    <!-- Bottom small vertical -->
+    <rect x="28" y="52" width="4" height="6" />
+    <!-- Left small horizontal -->
+    <rect x="2" y="28" width="6" height="4" />
+    <!-- Right small horizontal -->
+    <rect x="52" y="28" width="6" height="4" />
+    <!-- Top-left small cross -->
+    <rect x="12" y="12" width="3" height="10" />
+    <rect x="8" y="16" width="10" height="3" />
+    <!-- Top-right small cross -->
+    <rect x="45" y="12" width="3" height="10" />
+    <rect x="42" y="16" width="10" height="3" />
+    <!-- Bottom-left small cross -->
+    <rect x="12" y="38" width="3" height="10" />
+    <rect x="8" y="42" width="10" height="3" />
+    <!-- Bottom-right small cross -->
+    <rect x="45" y="38" width="3" height="10" />
+    <rect x="42" y="42" width="10" height="3" />
+  </g>
+</svg>

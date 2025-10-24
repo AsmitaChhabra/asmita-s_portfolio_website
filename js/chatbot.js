@@ -106,15 +106,17 @@ function mountChatWidget() {
     }
 
     // Local fallback
-    const canned = `I’m Asmita’s AI. I can summarize projects, skills (Python, SQL, Tableau, ML basics), and how to contact her. Ask things like “Show me dashboard projects” or “What ML have you done?”.`;
+    const canned = "Hi! I'm Asmita's AI assistant. I can tell you about her projects, technical skills, or how to get in touch. Try asking 'What are your projects?' or 'How can I contact you?'";
     let reply = canned;
     const ql = q.toLowerCase();
-    if (ql.includes('project') || ql.includes('dashboard')) {
-      reply = 'Recent projects include: E‑Kart Customer Retention (ML/EDA), Football DB SQL Querying, OpenCV Resume Builder, Meteorological Data Analysis, Cyclone Analysis, and IPL Data Viz. Want a short summary of any?';
-    } else if (ql.includes('skill') || ql.includes('stack') || ql.includes('tech')) {
-      reply = 'Core skills: Python, SQL & database design, Tableau & visualization, plus ML foundations (supervised/unsupervised, scikit‑learn, evaluation).';
-    } else if (ql.includes('contact') || ql.includes('email')) {
-      reply = 'You can reach Asmita at asmita.chhabra@flame.edu.in or via LinkedIn (links in header/footer).';
+    if (ql.includes('project') || ql.includes('dashboard') || ql.includes('work') || ql.includes('portfolio')) {
+      reply = 'Recent projects include: E-Kart Customer Retention Strategy, Extensive SQL Querying for Football Database, OpenCV Resume Builder, Meteorological Data Analysis at ARIES Nainital, Cyclone Data Analysis (IBTrACS), and IPL Data Analysis & Visualization. Check the Projects section for GitHub links!';
+    } else if (ql.includes('skill') || ql.includes('stack') || ql.includes('tech') || ql.includes('toolkit') || ql.includes('tools')) {
+      reply = "Asmita's toolkit: Python (primary language), SQL for data extraction, Pandas/NumPy/Scikit-learn for modeling, Plotly/Matplotlib/Seaborn for visualization, and Git/GitHub for version control. She handles the full analytical lifecycle!";
+    } else if (ql.includes('contact') || ql.includes('email') || ql.includes('reach') || ql.includes('hire')) {
+      reply = 'You can reach Asmita at asmitachhabra04@gmail.com or connect on LinkedIn and GitHub (links in the footer). Located in Pune, India - open to data science internships and projects!';
+    } else if (ql.includes('about') || ql.includes('who') || ql.includes('background')) {
+      reply = 'Asmita is an aspiring Data Scientist who loves finding hidden patterns in complex datasets, bridging analytical rigor with creative problem-solving to drive real-world impact. She combines technical depth, statistical reasoning, and storytelling.';
     }
     setTimeout(() => push('bot', reply), 150);
   }
